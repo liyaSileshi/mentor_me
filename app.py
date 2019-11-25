@@ -22,11 +22,9 @@ def mentor_profile():
 def sign_up():
     return 'signup'
 
-
 @app.route('/signin')
 def sign_in():
     return 'sign in'
-
 
 if __name__ == '__main__':
     app.run(debug=True)
