@@ -7,10 +7,17 @@ from datetime import datetime
 app = Flask(__name__)
 
 @app.route('/')
-def hello_world():
+def index():
     return render_template('index.html')
 
+@app.route('/mentors')
+def mentors_list():
+    return render_template('mentors.html')
 
+@app.route('/mentor_profile')
+def mentor_profile():
+    return render_template('mentors.html')
+    
 @app.route('/signup')
 def sign_up():
     return 'signup'
@@ -23,4 +30,5 @@ def sign_in():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 
