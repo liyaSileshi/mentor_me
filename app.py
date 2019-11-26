@@ -18,6 +18,11 @@ def mentors_list():
 def mentor_profile():
     return render_template('mentor_profile.html')
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+
 @app.route('/signup')
 def sign_up():
     return 'signup'
