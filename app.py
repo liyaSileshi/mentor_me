@@ -3,7 +3,11 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 import os
 from datetime import datetime
+from pymongo import MongoClient
 
+client = MongoClient()
+db = client.MentorMe
+mentors = db.mentors
 app = Flask(__name__)
 
 @app.route('/')
@@ -12,7 +16,7 @@ def index():
 
 @app.route('/mentors')
 def mentors_list():
-    return render_template('mentors.html')
+    return render_template('mentors.html', mentors = mentors.find())
 
 @app.route('/mentor_profile')
 def mentor_profile():
