@@ -1,12 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for
-# from flask_sqlalchemy import SQLAlchemy
-
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import os
 import json
 from datetime import datetime
 from pymongo import MongoClient
+from forms import RegistrationForm, LoginForm
 
 client = MongoClient()
 db = client.MentorMe
@@ -14,9 +13,10 @@ mentors = db.mentors
 mentee = db.mentors
 app = Flask(__name__)
 
+app.config['SECRET_KEY'] = '412eb254393c7dec141e79faf17b8a17'
 # m1={'Name':'Lorem', 'age':21}
-m2= {'Name':'red', 'age':20}
-mentee.insert_one(m2)
+# m2= {'Name':'red', 'age':20}
+# mentee.insert_one(m2)
 
 
 @app.route('/')
@@ -44,26 +44,31 @@ def about():
     return render_template('about.html')
 
 
-@app.route('/signup')
-def sign_up():
-    return 'signup'
+@app.route('/register')
+def register():
+    form = RegistrationForm()
+    return render_template('register.html', title = 'Register', form=form)
 
-@app.route('/signin')
-def sign_in():
-    return 'sign in'
-
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login')
 def login():
-    error = None
-    if request.method == 'POST':
-        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
-            error = 'Invalid Credentials. Please try again.'
-        else:
-            return redirect(url_for('index'))
-    return render_template('login.html', error=error)
+    form = LoginForm()
+    return render_template('login.html', title='Login', form=form)
+    
+
+
+
+
+
+# @app.route('/login', methods=['GET', 'POST'])
+# def login():
+#     error = None
+#     if request.method == 'POST':
+#         if request.form['username'] != 'admin' or request.form['password'] != 'admin':
+#             error = 'Invalid Credentials. Please try again.'
+#         else:
+#             return redirect(url_for('index'))
+#     return render_template('login.html', error=error)
 
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
