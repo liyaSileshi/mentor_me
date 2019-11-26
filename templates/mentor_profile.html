@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Mentor x Profile </h1>
-<p>Name: Lorem Ipsum</p>
-<p>Profession: Doctor</p>
-<p>Interest: Books</p>
-<p>Email: @doctor.com</p>
-<a href='#'>Chat</a>
 
+  <h1>{{mentor.name}}'s Profile </h1>
+
+  <p>Name: {{mentor.name}}</p>
+  <p>Profession:{{mentor.profession}}</p>
+  <p>Interest: Books</p>
+  <p>Email: {{mentor.Email}}</p>
+  <a href='#'>Chat</a>
 
 {% endblock %}

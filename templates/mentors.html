@@ -3,16 +3,9 @@
 {% block content %}
 <h1>Lists of Mentors </h1>
 <div class= 'mentors' style='display:flex; flex-direction: column;'>
-  <a href='/mentor_profile'>Lorem Ipsum</a>
-  <a href='/mentor_profile'>Lorem Ipsum</a>
-  <a href='/mentor_profile'>Lorem Ipsum</a>
-  <a href='/mentor_profile'>Lorem Ipsum</a>
-  <a href='/mentor_profile'>Lorem Ipsum</a>
-  <a href='/mentor_profile'>Lorem Ipsum</a>
-  <a href='/mentor_profile'>Lorem Ipsum</a>
-  <a href='/mentor_profile'>Lorem Ipsum</a>
-  <a href='/mentor_profile'>Lorem Ipsum</a>
-  <a href='/mentor_profile'>Lorem Ipsum</a>
-  <a href='/mentor_profile'>Lorem Ipsum</a>
+  {% for mentor in mentors %}
+    <a href='/mentors/{{ mentor._id }}' >{{mentor.name}}</a>
+    
+  {% endfor %}
 </div>
 {% endblock %}
