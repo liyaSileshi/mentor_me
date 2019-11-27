@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import os
@@ -44,9 +44,12 @@ def about():
     return render_template('about.html')
 
 
-@app.route('/register')
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
+    if form.validate_on_submit():
+        flash(f'Account created for {form.username.data}!', 'success')
+        return redirect(url_for('/'))
     return render_template('register.html', title = 'Register', form=form)
 
 @app.route('/login')
