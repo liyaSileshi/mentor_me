@@ -10,17 +10,21 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <!-- BOOTSTRAP THEME -->
   <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='/css/style.css',v=0.01)}}">
+
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/styles.css')}}">
 </head>
 <body>
 
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#" style='padding-bottom: 0.75em;'>Mentor-Me</a>
-    <div class="navbar-nav" style="display:flex; align-content: center; font-weight: 900;">
-      <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="/about">About</a>
+    <a class="navbar-brand" href="/" style='padding-bottom: 0.75em;'>Mentor-Me</a>
+    <div class="navbar-nav mr-auto" style="display:flex; align-content: center; font-weight: 900;">
+      <a class="nav-item nav-link active" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="{{ url_for('about') }}">About</a>
+    </div>
+    <div class = 'navbar-nav'>
+        <a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
+        <a class="nav-item nav-link" href="{{ url_for('register') }}">Register</a>
     </div>
   </nav>
 

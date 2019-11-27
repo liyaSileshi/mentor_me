@@ -10,14 +10,26 @@ from forms import RegistrationForm, LoginForm
 client = MongoClient()
 db = client.MentorMe
 mentors = db.mentors
-mentee = db.mentors
+# mentee = db.mentee
+users = db.users
+
+
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = '412eb254393c7dec141e79faf17b8a17'
-# m1={'Name':'Lorem', 'age':21}
-# m2= {'Name':'red', 'age':20}
-# mentee.insert_one(m2)
 
+class user(object):
+    def __init__(self, username, password, email):
+        self.username = username
+        self.password = password
+        self.email = email
+
+    def json(self):
+        return {
+            'username': self.username,
+            'password': self.password,
+            'email': self.email
+        }
 
 @app.route('/')
 def index():
@@ -32,46 +44,43 @@ def mentor_profile(mentor_id):
     mentor = mentors.find_one({'_id' : ObjectId(mentor_id)})
     return render_template('mentor_profile.html', mentor = mentor)
 
-# @app.route('/books/<book_id>')
-# def book_show(book_id):
-#     """Show a single book."""
-#     book = books.find_one({'_id' : ObjectId(book_id)})
-#     book_users = users.find({'book_id': ObjectId(book_id)})
-#     return render_template('book_show.html', book= book)
-
 @app.route('/about')
 def about():
     return render_template('about.html')
 
-
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    form = RegistrationForm()
-    if form.validate_on_submit():
-        flash(f'Account created for {form.username.data}!', 'success')
-        return redirect(url_for('/'))
-    return render_template('register.html', title = 'Register', form=form)
+    """Registration page for users"""
+    if request.method == 'POST':
+        form = RegistrationForm()
+        if form.validate_on_submit():
+            if users.find_one({'username':form.username.data}):
+                flash(f'Sorry, an account with this username already exists!')
+                return redirect(url_for('register'))
+            else:
+                current_user = users.insert_one(user(form.username.data, form.password.data, form.email.data).json())
+                flash(f'Congrats! You have successfully created an account!')
+                return redirect(url_for('login'))
+        else:
+            flash(f'Incorrect credintials')
+            return render_template('register.html',title='Register', form=form)
 
-@app.route('/login')
+    if request.method == 'GET':
+        form = RegistrationForm()
+        return render_template('register.html', title = 'Register', form=form)
+
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+    """ Users login page"""
     form = LoginForm()
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            if users.find_one({'email': form.email.data}):
+                if (form.email.data == users.find_one({"email": form.email.data})["email"]) and (form.password.data == users.find_one({"email": form.email.data})["password"]):
+                    return redirect(url_for('index'))
+                else:
+                    flash(f"Login unsuccessful. Please check if email and password was correct", 'danger')
     return render_template('login.html', title='Login', form=form)
     
-
-
-
-
-
-# @app.route('/login', methods=['GET', 'POST'])
-# def login():
-#     error = None
-#     if request.method == 'POST':
-#         if request.form['username'] != 'admin' or request.form['password'] != 'admin':
-#             error = 'Invalid Credentials. Please try again.'
-#         else:
-#             return redirect(url_for('index'))
-#     return render_template('login.html', error=error)
-
-
 if __name__ == '__main__':
     app.run(debug=True)
