@@ -1,8 +1,14 @@
 body{
-    background-color:#8c8c9c;
+    background-color:#021e37;
 }
 .footer{
     background-color: #1a1a1a;
     margin-top:28em;
-    padding-bottom: 9em;
+    height:120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.subject h3{
+    color: white;
 }
