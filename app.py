@@ -42,7 +42,15 @@ def mentors_list():
 @app.route('/mentors/<mentor_id>')
 def mentor_profile(mentor_id):
     mentor = mentors.find_one({'_id' : ObjectId(mentor_id)})
+    # mentor = {
+    #     'name': "Bob",
+
+    # }
     return render_template('mentor_profile.html', mentor = mentor)
+
+@app.route('/mentor_form')
+def mentor_form():
+    return render_template('mentor_form.html')
 
 @app.route('/about')
 def about():
