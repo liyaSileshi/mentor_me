@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<div class= 'mentors'>
-  <h1>Lists of Mentors </h1>
-  {% for mentor in mentors %}
-    <a href='/mentors/{{ mentor._id }}' >{{mentor.name}}</a>
-  {% endfor %}
+<div class="container">
+  <div class="row">
+      <div class="offset-lg-1 col-lg-4">
+          <div class= 'mentors'>
+              <h1>Lists of Mentors </h1>
+              {% for mentor in mentors %}
+                <a href='/mentors/{{ mentor._id }}' >{{mentor.name}}</a>
+              {% endfor %}
+            </div>
+      </div>
+  </div>
 </div>
+
 {% endblock %}
