@@ -1,6 +1,7 @@
 body{
     background-color:#021e37;
 }
+
 .footer{
     background-color: #1a1a1a;
     margin-top:28em;
@@ -9,6 +10,13 @@ body{
     align-items: center;
     justify-content: center;
 }
+
 .subject h3{
     color: white;
+}
+
+.form-control-lg {
+    padding: 0;
+    font-size: 3em;
+    height: calc(1.5em + 1.5rem + 0px);
 }
