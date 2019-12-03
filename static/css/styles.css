@@ -20,3 +20,16 @@ body{
     font-size: 3em;
     height: calc(1.5em + 1.5rem + 0px);
 }
+
+.mentors{
+    display:flex;
+    flex-direction: column;
+}
+
+.mentors > h1, .mentors > a{
+    color: white;
+}
+
+.profile h1, .profile p{
+    color: white;
+}
