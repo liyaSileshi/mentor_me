@@ -2,6 +2,16 @@ body{
     background-color:#021e37;
 }
 
+.hero-background{
+    background-color: aqua;
+    background-image: url(https://img4.goodfon.com/wallpaper/nbig/a/8b/vector-blue-squares-abstract-background-geometric.jpg);
+    height: 40em;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .footer{
     background-color: #1a1a1a;
     margin-top:28em;
