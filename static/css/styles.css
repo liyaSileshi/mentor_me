@@ -12,6 +12,10 @@ body{
     background-repeat: no-repeat;
 }
 
+.hero-index{
+    margin-top: 9em;
+}
+
 .footer{
     background-color: #1a1a1a;
     margin-top:28em;
