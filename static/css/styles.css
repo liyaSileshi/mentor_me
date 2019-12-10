@@ -38,10 +38,23 @@ body{
 .mentors{
     display:flex;
     flex-direction: column;
+    margin-top: 5em;
 }
 
 .mentors > h1, .mentors > a{
     color: white;
+}
+
+.mentors > a{
+    font-family: helvetica;
+    font-size: 3em;
+    padding-left: 1em;
+}
+
+.mentors > h1{
+    font-size: 4em;
+    width: 20em;
+    padding-bottom: 1em;
 }
 
 .profile h1, .profile p, .profile a{
