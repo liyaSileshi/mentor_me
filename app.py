@@ -7,8 +7,9 @@ from datetime import datetime
 from pymongo import MongoClient
 from forms import RegistrationForm, LoginForm
 
-client = MongoClient()
-db = client.MentorMe
+host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/mentor-me')
+client = MongoClient(host=f'{host}?retryWrites=false')
+db = client.get_default_database()
 mentors = db.mentors
 # mentee = db.mentee
 users = db.users
