@@ -7,7 +7,7 @@ from datetime import datetime
 from pymongo import MongoClient
 from forms import RegistrationForm, LoginForm
 
-host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/mentor-me')
+host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/MentorMe')
 client = MongoClient(host=f'{host}?retryWrites=false')
 db = client.get_default_database()
 mentors = db.mentors
@@ -38,6 +38,10 @@ def index():
 
 @app.route('/mentors')
 def mentors_list():
+    #  mentor = {
+    #     'name': "Bob",
+
+    # }
     return render_template('mentors.html', mentors = mentors.find())
 
 @app.route('/mentors/<mentor_id>')
