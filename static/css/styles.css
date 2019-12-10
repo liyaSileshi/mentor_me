@@ -61,6 +61,20 @@ body{
     color: white;
 }
 
+.profile{
+    padding-left: 25em;
+    margin-top: 5em;
+}
+
+.profile h1{
+    font-size: 3em;
+    margin-bottom: 1em;
+}
+
+.profile p{
+    font-size: 2em;
+}
+
 .email{
     
 }
