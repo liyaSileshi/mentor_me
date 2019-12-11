@@ -1,5 +1,6 @@
 body{
     background-color:#021e37;
+    font-family: Helvetica;
 }
 
 .hero-background{
@@ -95,3 +96,24 @@ body{
 .mentor-form{
     margin-top: 6em;
 }
+
+.about{
+    margin-top: 2em;
+    color: white;
+    font-size: 2em;
+}
+
+.become{
+    height: 10em;
+    width: 20em;
+    padding-top: 4em;
+    margin-left: 50em;
+    background-color: green;
+    margin-top:10em;
+}
+
+.lead{
+    color: black;
+    font-size: 2em;
+}
+
