@@ -6,6 +6,7 @@ import json
 from datetime import datetime
 from pymongo import MongoClient
 from forms import RegistrationForm, LoginForm
+import sys
 
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/MentorMe')
 client = MongoClient(host=f'{host}?retryWrites=false')
@@ -17,7 +18,7 @@ users = db.users
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = '412eb254393c7dec141e79faf17b8a17'
+app.config['SECRET_KEY'] = os.environ['secret_key']
 
 class user(object):
     def __init__(self, username, password, email):
