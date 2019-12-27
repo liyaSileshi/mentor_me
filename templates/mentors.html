@@ -7,7 +7,9 @@
           <div class= 'mentors'>
               <h1>List of Mentors </h1>
               {% for mentor in mentors %}
-                <a href='/mentors/{{ mentor._id }}' >{{mentor.name}}</a>
+                
+                <i class="fa fa-user-circle-o icon" style="font-size:36px"><a href='/mentors/{{ mentor._id }}' class='mentornames' >{{mentor.name}}</a></i>
+                
               {% endfor %}
             </div>
       </div>
