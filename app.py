@@ -7,7 +7,7 @@ from datetime import datetime
 from pymongo import MongoClient
 from forms import RegistrationForm, LoginForm
 import sys
-
+#export secret_key='412eb254393c7dec141e79faf17b8a17'
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/MentorMe')
 client = MongoClient(host=f'{host}?retryWrites=false')
 db = client.get_default_database()
