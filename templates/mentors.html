@@ -9,7 +9,14 @@
               {% for mentor in mentors %}
                 
                 <i class="fa fa-user-circle-o icon" style="font-size:36px"><a href='/mentors/{{ mentor._id }}' class='mentornames' >{{mentor.name}}</a></i>
-                
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="https://images.unsplash.com/photo-1521511189395-b82252213754?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=941&q=80" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">{{mentor.name}}</h5>
+                    <p class="card-text">{{mentor.age}}</p>
+                    <a href="/mentors/{{ mentor._id }}" class="btn btn-primary">Click to see profile</a>
+                  </div>
+                </div>
               {% endfor %}
             </div>
       </div>
