@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_login import current_user
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import os
@@ -36,10 +35,6 @@ class user(object):
 
 @app.route('/home')
 def index():
-    # if current_user.is_authenticated:
-    #      return render_template("index.html")
-    # else:
-    #      return render_template("anonymous_index.html")
     return render_template('index.html')
 
 @app.route('/mentors')
@@ -55,7 +50,6 @@ def mentor_profile(mentor_id):
     mentor = mentors.find_one({'_id' : ObjectId(mentor_id)})
     # mentor = {
     #     'name': "Bob",
-
     # }
     return render_template('mentor_profile.html', mentor = mentor)
 
