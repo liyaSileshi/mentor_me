@@ -15,7 +15,6 @@ mentors = db.mentors
 # mentee = db.mentee
 users = db.users
 
-
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = os.environ['secret_key']
